@@ -15,7 +15,11 @@ class ProjectController extends Controller
     {
         $projects = Project::where('is_published', true)->orderBy('updated_at', 'DESC')->get();
 
-        return response()->json(compact('projects'));
+        foreach ($projects as $project) {
+            if ($project->image_url) $project->image_url = url('storage/' + $project->image_url);
+        };
+
+        return response()->json($projects);
     }
 
     /**
