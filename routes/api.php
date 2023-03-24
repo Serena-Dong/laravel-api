@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/prova', function () {
+    $name = 'Paolo';
+    return response()->json(compact('name'));
+});
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
